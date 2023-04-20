@@ -31,15 +31,16 @@ const Header = () => {
       }
     }
   });
-  const [number, setnumber] = useState(0)
+  const [number, setnumber] = useState([])
   const [open, setOpen] = useState(false)
-  // const [totalU, settotalU] = useState(0)
+  const [totalU, settotalU] = useState(0)
   // const [value, setvalue] = useState({
   //   meta: ""
   // })
   // const newValue = useRef(0)
+  const inputRef = React.useRef();
 
-  let totalArr = [];
+  // let totalArr = [];
 
   const getMtualFunds = async () => {
     const MatualFunds = await axios.get(`${url}/search?q=${searchInput}`);
@@ -95,33 +96,23 @@ const Header = () => {
   };
 
 
-  const decrement = () => {
-    if(number > 0){
-      setnumber(number - 1)
-      totalArr.push(number)
-      // totalUnits()
-    }else{
-      alert("limit reached")
-      setnumber(0)
-    }
-  }
-
-  const increment = () => {
-    setnumber( number + 1)
-    totalArr.push(number)
-    // totalUnits()
-  }
-
-  // const totalUnits = () => {
-  //   let total = totalArr.reduce((previous, current) => {
-  //       return previous + current;
-  //   }, 0)
-  //   settotalU(total)
-  // }
-
+  const handleChangenumber = (e) => {
+    // setNumber(parseInt(inputRef.current.value)); // for float numbers use parseFloat
+    // console.log(inputRef.current.value)
+    console.log(typeof parseInt(e.target.value))
+    let num = parseInt(e.target.value)
+    setnumber([...number, num])
+    console.log(number)
+    let total = number.reduce((a, b) => {
+        return a + b;
+    }, 0)
+    settotalU(total)
+    console.log(totalU)
+  };
+  
   return (
     <>
-      <section className={styles.portfolio}>
+      <header className={styles.portfolio}>
         <Search handleChange={handleChange} searchInput={searchInput} />
         <List sx={{ maxWidth: 530, bgcolor: "background.paper" }}>
           {fundData.map((value, index) => (
@@ -135,7 +126,7 @@ const Header = () => {
             </ListItem>
           ))}
         </List>
-      </section>
+      </header>
       <div className={styles.portfolioA}>
         <h1>Portfolio</h1>
         {selectedFunds.map((value, index) => (
@@ -148,6 +139,7 @@ const Header = () => {
               display: "flex",
             }}
             // onClick={() => handleScheme(value)}
+            className={styles.list}
           >
             <ListItem 
             alignItems="flex-start"
@@ -165,17 +157,16 @@ const Header = () => {
                 justifyContent: "space-around",
                 alignItems: "center",
               }}
+              key={index}
               className={styles.counter}
             >
               <h5>units</h5>
-              <button onClick={decrement}>-</button>
-              <span> {number} </span>
-              <button onClick={increment}>+</button>
+              <input type="number" ref={inputRef} name="quantity" onClickCapture={handleChangenumber} min={0} max={100} ></input>
             </Box>
           </List>
         ))}
             <Box className={styles.total}>
-              <button>Total : {number}</button>
+              <button>Total : {totalU}</button>
             </Box>
       </div>
       {/* {dialogBox ? <DialogBox schemeData={schemeData} dialogBox={dialogBox}/> : undefined} */}

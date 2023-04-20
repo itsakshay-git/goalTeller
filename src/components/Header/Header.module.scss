@@ -1,26 +1,35 @@
-.portfolio {
-    min-height: 100vh;
-    width: 50vw;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    // border-right: 1px solid rgb(255, 255, 255);
-
-    .list{
-      height: 70px;
-      padding: 10px;
-    }
-    .list:hover{
-      background-color: #346ccb;
-      color: #fbfcfd;
+// header{
+  .portfolio {
+      min-height: 100vh;
+      width: 50vw;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      // border-right: 1px solid rgb(255, 255, 255);
+  
+      .list{
+        height: 70px;
+        padding: 10px;
+      }
+      .list:hover{
+        background-color: #346ccb;
+        color: #fbfcfd;
+      }
+  
     }
 
     // @media screen and (max-width: 900px) {
-    //   .portfolio{
-    //     display: block;
+    //   header{
+    //     padding: 0;
+    //     margin: 10px;
+    //     .portfolio{
+    //       display: block;
+    //       width: 0px;
+    //     }
     //   }
     // }
-  }
+// }
+
 
   .counter{
     button{
@@ -31,6 +40,14 @@
       height: 20px;
       width: 20px;
       cursor: pointer;
+    }
+    input{
+      width: 60px;
+      height: 25px;
+      border: none;
+      border-radius: 6px;
+      background-color: #346ccb;
+      color: #fbfcfd;
     }
   }
 
@@ -44,21 +61,35 @@
     }
   }
 
-  .portfolioA{
-    width: 50vw;
-    display: flex;
-    justify-content:flex-start;
-    align-items:center;
-    flex-direction: column;
-    margin-top: 20px;
+  // div{
+    .portfolioA{
+      width: 50vw;
+      display: flex;
+      justify-content:flex-start;
+      align-items:center;
+      flex-direction: column;
+      margin-top: 20px;
+  
+      h1{
+          color: white;
+      }
 
-    h1{
-        color: white;
+      .list:hover{
+        background-color: #346ccb;
+        input{
+          background-color: #fbfcfd;
+          color: black;
+        }
+      }
+  
     }
 
     // @media screen and (max-width: 900px) {
-    //   .portfolioA{
-    //     display: block;
+    //   div{
+    //     .portfolioA{
+    //       // display: block;
+    //       width: fit-content;
+    //     }
     //   }
     // }
-  }
+  // }
