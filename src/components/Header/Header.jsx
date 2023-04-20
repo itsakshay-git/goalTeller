@@ -161,7 +161,7 @@ const Header = () => {
               className={styles.counter}
             >
               <h5>units</h5>
-              <input type="number" ref={inputRef} name="quantity" onClickCapture={handleChangenumber} min={0} max={100} ></input>
+              <input type="number" ref={inputRef} placeholder={10} onClickCapture={handleChangenumber} min={0} max={100} ></input>
             </Box>
           </List>
         ))}
